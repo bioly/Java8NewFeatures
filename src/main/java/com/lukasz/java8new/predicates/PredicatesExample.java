@@ -1,5 +1,7 @@
 package com.lukasz.java8new.predicates;
 
+import com.lukasz.java8new.domain.Person;
+
 import java.util.Random;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -62,5 +64,9 @@ public class PredicatesExample {
         streamOf(100).filter(predOlder)
                 .forEach(System.out::println);
 
+        System.out.println("**********************");
+
+        Stream<Integer> intStream = Stream.of(1,2,3,4);
+        intStream.forEach(System.out::println);
     }
 }
