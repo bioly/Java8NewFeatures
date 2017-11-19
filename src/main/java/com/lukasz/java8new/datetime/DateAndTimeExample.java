@@ -6,6 +6,8 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoField;
 import java.util.Locale;
+import java.util.Set;
+import java.util.function.Predicate;
 
 public class DateAndTimeExample {
 
@@ -74,5 +76,20 @@ public class DateAndTimeExample {
         DateTimeFormatter f = b.toFormatter();
 
         System.out.println(f.format(currentDate));
+
+        System.out.println("*************************");
+
+        Set<String> zones = ZoneId.getAvailableZoneIds();
+
+        Predicate<String> conditions = str -> str.contains("New_York");
+
+        zones.forEach(z -> {
+            if(conditions.test(z)) {
+                System.out.println(z);
+            }
+        });
+
+        ZonedDateTime zdt = ZonedDateTime.now(ZoneId.of("America/Chicago"));
+        System.out.println(zdt);
     }
 }
